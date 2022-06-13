@@ -1,81 +1,35 @@
-from ast import Break
-from multiprocessing import RLock
-import random
+class Student:
+    # [assignment] Skeleton class. Add your code here
+    def __init__(self, name, age, tracks, score):
+        self.name = str(name)
+        self.age = int(age)
+        self.track = list(tracks)
+        self.score = float(score )
+    #method
+    def change_name(self, new_name):
+        self.new_name = new_name
+        return self.new_name
+        #print ("This is the changed name: ", new_name)
 
-print("Welcome!\nStarting Rock Paper Scissors game")
-print("Choices")
-print("R = Rock")
-print("P = Paper")
-print("S = Scissors")
+    def change_age(self, new_age):
+        self.new_age = new_age
+        return self.new_age
+        #print ("This is the changed age: ", new_age)
 
+    def add_track(self, tracks):
+        self.track.append(tracks)
+        return self.track
+        #print ("This is the new track: ", track)
 
-# user_action = input("Enter a choice (R,P,S): ")
-possible_options = ["R", "P", "S"]
-# computer_action = random.choice(possible_options)
-
-def choose_option():
-    user_action = input("Enter a choice (R,P,S): ")
-    if user_action in ("R","r"):
-        user_action = "Rock"
-    elif user_action in ("P","p"):
-        user_action = "Paper"
-    elif user_action in ("S","s"):
-        user_action = "Scissors"
-    else:
-        print("Error!, try again.")
-        # choose_option()
-    return user_action
-
-def computer_option():
-    computer_action = random.choice(possible_options)
-    if computer_action == ("R"):
-        computer_action = "Rock"
-    elif computer_action == ("P"):
-        computer_action = "Paper"
-    else:
-        computer_action = "Scissors"
-    return computer_action
+    def get_score(self):
+        return self.score
+        #print ("This is the score: ", self.score)
 
 
-while True:
-    print("")
-    user_action = choose_option()
-    computer_action = computer_option()
-    # print("Player",  user_action, ": CPU", computer_action )
-    
-    if user_action == computer_action:
-        print(f"Player ({user_action}), : CPU ({computer_action})" )
-        print(f"Both players selected {user_action}. It's a tie")
+Bob = Student(name="Bob", age=26, tracks=["FE","BE"],score=20.90)
 
-    elif user_action == "Rock":
-        print(f"Player ({user_action}), : CPU ({computer_action})" )
-        if computer_action == "Scissors":
-            print("Rock smashes scissors! Player wins!")
-            break 
-        else:
-            print("Paper covers rock! CPU wins!")
-            break
-
-    elif user_action == "Paper":
-        print(f"Player ({user_action}), : CPU ({computer_action})" )
-        if computer_action == "Rock":
-            print("Paper covers rock! Player wins!!")
-            break
-        else:
-            print("Scissors cuts paper! CPU wins!")
-            break
-
-    elif user_action == "Scissors":
-        print(f"Player ({user_action}), : CPU ({computer_action})" )
-        if computer_action == "Paper":
-            print("Scissors cuts paper! Player wins!")
-            break
-        else:
-            print("Rock smashes scissors! CPU wins!")
-            break
-
-
-
-    
-
-
+# Expected methods
+print ("This is the changed name: ",Bob.change_name("Peter"))
+print("This is the changed age: " ,Bob.change_age(34))
+print("These are the tracks: ", Bob.add_track("UI/UX"))
+print("This is the score: ", Bob.get_score())
